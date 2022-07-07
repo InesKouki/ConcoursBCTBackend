@@ -20,4 +20,38 @@ public class Choix {
 	
 	@ManyToOne
 	private Question question;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public float getScoreChoix() {
+		return scoreChoix;
+	}
+
+	public void setScoreChoix(float scoreChoix) {
+		this.scoreChoix = scoreChoix;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	
+	
 }

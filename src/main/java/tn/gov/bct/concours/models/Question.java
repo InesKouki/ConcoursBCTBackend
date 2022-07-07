@@ -32,6 +32,10 @@ public class Question {
 		this.libelle = libelle;
 	}
 	
+	public void addChoix(Choix c) {
+		this.choix.add(c);
+		c.setQuestion(this);
+	}
 	
 	
 }
