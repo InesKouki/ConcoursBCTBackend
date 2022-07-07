@@ -2,33 +2,47 @@ package tn.gov.bct.concours.serviceImplementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import tn.gov.bct.concours.models.Concours;
+import tn.gov.bct.concours.models.Poste;
+import tn.gov.bct.concours.repositories.ConcourRepository;
+import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IConcourService;
 
+@Service
 public class ConcourServiceImpl implements IConcourService {
 
+	@Autowired
+	ConcourRepository concourRepo;
+	@Autowired
+	PosteRepository posteRepo;
 	@Override
-	public void addConcours(Concours c, Long idPost) {
-		// TODO Auto-generated method stub
+	public Concours addConcours(Concours c, Long idPoste) {
+		Poste p = posteRepo.findPosteById(idPoste);
+		c.addPoste(p);
+		return	concourRepo.save(c);
 		
 	}
 
 	@Override
 	public void deleteConcours(Long idConcour) {
-		// TODO Auto-generated method stub
+		concourRepo.deleteConcoursById(idConcour);
 		
 	}
 
 	@Override
-	public void updateConcours(Concours c, Long idConcour) {
-		// TODO Auto-generated method stub
+	public Concours updateConcours(Concours c, Long idPoste) {
+		Poste p = posteRepo.findPosteById(idPoste);
+		c.addPoste(p);
+		return concourRepo.save(c);
 		
 	}
 
 	@Override
 	public List<Concours> getAllConcours() {
-		// TODO Auto-generated method stub
-		return null;
+		return concourRepo.findAll();
 	}
 
 	@Override
@@ -36,5 +50,7 @@ public class ConcourServiceImpl implements IConcourService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

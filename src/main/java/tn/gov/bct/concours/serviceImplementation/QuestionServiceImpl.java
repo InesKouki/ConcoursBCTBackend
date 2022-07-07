@@ -3,11 +3,12 @@ package tn.gov.bct.concours.serviceImplementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.models.Question;
 import tn.gov.bct.concours.repositories.QuestionRepository;
 import tn.gov.bct.concours.services.IQuestionService;
-
+@Service
 public class QuestionServiceImpl implements IQuestionService {
 
 	@Autowired
@@ -37,7 +38,7 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Override
 	public Question findQuestionByName(String name) {
-		return questRepo.findQuestionByName(name);
+		return questRepo.findQuestionByLibelle(name);
 	}
 
 }

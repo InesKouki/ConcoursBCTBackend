@@ -6,7 +6,7 @@ public interface QuestionRepository extends JpaRepository <Question, Long> {
 
 	void deleteQuestionById(Long idQuestion);
 
-	Question findQuestionByName(String name);
+	Question findQuestionByLibelle(String name);
 
 	Question findQuestionById(Long idQuestion);
 

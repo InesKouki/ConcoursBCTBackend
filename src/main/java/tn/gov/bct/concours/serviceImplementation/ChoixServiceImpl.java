@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.models.Choix;
 import tn.gov.bct.concours.models.Question;
@@ -12,6 +13,7 @@ import tn.gov.bct.concours.repositories.ChoixRepository;
 import tn.gov.bct.concours.repositories.QuestionRepository;
 import tn.gov.bct.concours.services.IChoixService;
 
+@Service
 public class ChoixServiceImpl implements IChoixService {
 
 	@Autowired

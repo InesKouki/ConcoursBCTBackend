@@ -84,6 +84,11 @@ public class Concours {
         this.description = description;
     }
 
+    public void addPoste(Poste p) {
+		this.postes.add(p);
+		
+	}
+    
     @Override
     public String toString() {
         return "Concour{" +

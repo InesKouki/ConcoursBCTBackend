@@ -10,4 +10,6 @@ public interface PosteRepository extends JpaRepository <Poste, Long> {
 
 	public void deletePosteById(Long idPoste);
 
+	public Poste findPosteById(Long idPoste);
+
 }
