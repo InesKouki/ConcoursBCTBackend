@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import tn.gov.bct.concours.entities.User;
 import tn.gov.bct.concours.repositories.UserRepository;
 
-
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired

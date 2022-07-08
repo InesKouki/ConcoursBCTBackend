@@ -33,7 +33,7 @@ public class UserController {
 	IUserService userService;
 
 	@GetMapping("/all")
-	@PreAuthorize("hasRole('ADMIN') or hasRole('RH)")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
 	@ResponseBody
 	public List<User> getAllUsers() {
 		return userService.getAll();

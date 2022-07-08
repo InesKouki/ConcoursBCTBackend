@@ -20,7 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.entities.ERole;
 import tn.gov.bct.concours.entities.Role;
@@ -36,7 +36,7 @@ import tn.gov.bct.concours.repositories.UserRepository;
 import tn.gov.bct.concours.security.jwt.JwtUtils;
 import tn.gov.bct.concours.security.services.UserDetailsImpl;
 import tn.gov.bct.concours.services.IAuthService;
-
+@Service
 public class AuthServiceImpl implements IAuthService{
 	
 	private static final Logger LOG = LogManager.getLogger(AuthServiceImpl.class);

@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.entities.ERole;
 import tn.gov.bct.concours.entities.Role;
@@ -24,7 +25,7 @@ import tn.gov.bct.concours.repositories.UserRepository;
 import tn.gov.bct.concours.security.jwt.JwtUtils;
 import tn.gov.bct.concours.security.services.UserDetailsImpl;
 import tn.gov.bct.concours.services.IUserService;
-
+@Service
 public class UserServiceImpl implements IUserService{
 
 	@Autowired
