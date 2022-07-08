@@ -89,7 +89,36 @@ public class Concours {
 		
 	}
     
-    @Override
+    
+    public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	public Formulaire getFormulaire() {
+		return formulaire;
+	}
+
+	public void setFormulaire(Formulaire formulaire) {
+		this.formulaire = formulaire;
+	}
+
+	public Set<Poste> getPostes() {
+		return postes;
+	}
+
+	public void setPostes(Set<Poste> postes) {
+		this.postes = postes;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
     public String toString() {
         return "Concour{" +
                 "id=" + id +
