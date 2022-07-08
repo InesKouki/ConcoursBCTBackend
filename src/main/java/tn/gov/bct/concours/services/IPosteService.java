@@ -2,7 +2,7 @@ package tn.gov.bct.concours.services;
 
 import java.util.List;
 
-import tn.gov.bct.concours.models.Poste;
+import tn.gov.bct.concours.entities.Poste;
 
 public interface IPosteService {
 	public Poste addPoste(Poste p);

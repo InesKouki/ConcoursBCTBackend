@@ -2,7 +2,7 @@ package tn.gov.bct.concours.services;
 
 import java.util.List;
 
-import tn.gov.bct.concours.models.Choix;
+import tn.gov.bct.concours.entities.Choix;
 
 public interface IChoixService {
 	public Choix addChoix(Choix c,Long idQuestion);

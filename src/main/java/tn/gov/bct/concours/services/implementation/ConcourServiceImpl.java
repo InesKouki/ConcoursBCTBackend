@@ -1,12 +1,12 @@
-package tn.gov.bct.concours.serviceImplementation;
+package tn.gov.bct.concours.services.implementation;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.gov.bct.concours.models.Concours;
-import tn.gov.bct.concours.models.Poste;
+import tn.gov.bct.concours.entities.Concours;
+import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.repositories.ConcourRepository;
 import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IConcourService;

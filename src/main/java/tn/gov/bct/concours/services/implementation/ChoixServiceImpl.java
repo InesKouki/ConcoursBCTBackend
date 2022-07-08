@@ -1,4 +1,4 @@
-package tn.gov.bct.concours.serviceImplementation;
+package tn.gov.bct.concours.services.implementation;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.gov.bct.concours.models.Choix;
-import tn.gov.bct.concours.models.Question;
-
+import tn.gov.bct.concours.entities.Choix;
+import tn.gov.bct.concours.entities.Question;
 import tn.gov.bct.concours.repositories.ChoixRepository;
 import tn.gov.bct.concours.repositories.QuestionRepository;
 import tn.gov.bct.concours.services.IChoixService;
