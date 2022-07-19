@@ -2,7 +2,7 @@ package tn.gov.bct.concours.services;
 
 import java.util.List;
 
-import tn.gov.bct.concours.models.Question;
+import tn.gov.bct.concours.entities.Question;
 
 
 public interface IQuestionService {
