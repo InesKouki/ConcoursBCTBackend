@@ -9,6 +9,7 @@ public class JwtResponse {
 	private String token;
 	private Long id;
 	private String username;
+	@JsonIgnore
 	private String password;
 	private String email;
 	private boolean confirmed;

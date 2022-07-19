@@ -41,6 +41,10 @@ public class UserController {
 
 
 	@PutMapping("/confirm")
+<<<<<<< HEAD
+=======
+	@PreAuthorize("hasRole('USER')or hasRole('ADMIN') or hasRole('RH')")
+>>>>>>> ea27f1e0d72dd7ce90cb02decc5d17551211d11a
 	public ResponseEntity<JwtResponse> confirmUser(@RequestBody ConfirmRequest confirmRequest) {
 		return ResponseEntity.ok(userService.confirmUser(confirmRequest));
 	}
