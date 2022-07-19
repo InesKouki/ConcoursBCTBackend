@@ -25,5 +25,6 @@ public interface IConcourService {
 	public void addPosteToConcour(addPosteToConcourRequest req);
 	public void removePosteFromConcours(addPosteToConcourRequest req);
 	
+	
 
 }

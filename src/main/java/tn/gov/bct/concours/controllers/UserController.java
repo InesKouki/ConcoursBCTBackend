@@ -32,21 +32,15 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 
-	@GetMapping("/all")
-	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
+	@GetMapping("/userList")
+	//@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
 	@ResponseBody
 	public List<User> getAllUsers() {
 		return userService.getAll();
 	}
-	
-	/*@GetMapping("/home")
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
-	public AccueilStats accueil() {
-		return userService.pageAccueil();
-	}*/
+
 
 	@PutMapping("/confirm")
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<JwtResponse> confirmUser(@RequestBody ConfirmRequest confirmRequest) {
 		return ResponseEntity.ok(userService.confirmUser(confirmRequest));
 	}

@@ -1,6 +1,6 @@
 package tn.gov.bct.concours.models;
 
-import java.sql.Date;
+
 import java.util.Set;
 
 import javax.validation.constraints.Email;
@@ -26,8 +26,7 @@ public class SignupRequest {
 	
 	@NotBlank
 	private String sexe;
-	
-	private Date dateNaissance;
+
 	
 	private Set<String> role;
 
@@ -91,13 +90,6 @@ public class SignupRequest {
 		this.sexe = sexe;
 	}
 
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
 	
 	
 	

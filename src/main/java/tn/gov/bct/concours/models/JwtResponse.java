@@ -2,13 +2,14 @@ package tn.gov.bct.concours.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class JwtResponse {
 
 	private String token;
 	private Long id;
 	private String username;
 	private String password;
-	private String joinDate;
 	private String email;
 	private boolean confirmed;
 	private String code;
@@ -66,14 +67,6 @@ public class JwtResponse {
 
 	public List<String> getRoles() {
 		return roles;
-	}
-
-	public String getJoinDate() {
-		return joinDate;
-	}
-
-	public void setJoinDate(String joinDate) {
-		this.joinDate = joinDate;
 	}
 
 	public boolean isConfirmed() {

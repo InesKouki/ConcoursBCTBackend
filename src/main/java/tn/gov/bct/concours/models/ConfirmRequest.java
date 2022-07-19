@@ -4,18 +4,16 @@ import javax.validation.constraints.NotBlank;
 
 public class ConfirmRequest {
 
-	@NotBlank
+
 	private Long id;
 	
-	@NotBlank
 	private String username;
 	
-	@NotBlank
 	private String password;
 	
-	@NotBlank
 	private String code;
 
+	
 	public Long getId() {
 		return id;
 	}

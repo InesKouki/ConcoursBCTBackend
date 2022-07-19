@@ -1,6 +1,7 @@
 package tn.gov.bct.concours.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import tn.gov.bct.concours.entities.Concours;
+import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.models.NewConcourRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
 import tn.gov.bct.concours.services.IConcourService;
@@ -60,7 +61,11 @@ public class ConcourController {
 		concourInt.removePosteFromConcours(req);
 	}
 	
-	
+	@GetMapping("/postes/{id}")
+	@PreAuthorize("hasRole('ADMIN') ")
+	public Set<Poste> getEquipe(@PathVariable Long id) {
+		return concourInt.getPosteDuConcour(id);
+	}
 	
 	@PutMapping("/update")
 	@PreAuthorize("hasRole('ADMIN')")

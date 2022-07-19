@@ -32,7 +32,7 @@ public class User {
 	@JsonIgnore
 	String password;
 	
-	@NotBlank
+
 	String cin;
 
 	@NotBlank
@@ -58,6 +58,10 @@ public class User {
 
 	
 	
+	public User() {
+		super();
+	}
+
 	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
 			@NotBlank String username, boolean confirmed, Date dateNaissance, @NotBlank String sexe,String code) {
 		super();
@@ -72,6 +76,19 @@ public class User {
 		this.code = code;
 	}
 
+	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
+			@NotBlank String username, boolean confirmed, @NotBlank String sexe,String code) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+		this.username = username;
+		this.confirmed = confirmed;
+		this.sexe = sexe;
+		this.code = code;
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -36,6 +36,10 @@ public class UserServiceImpl implements IUserService{
 	RoleRepository roleRepository;
 	@Autowired
 	UserRepository userRepo;
+	
+	
+	
+	
 	@Override
 	public void deleteUser(Long id) {
 		Optional<User> u = userRepo.findById(id);
@@ -47,7 +51,16 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public List<User> getAll() {
-		return userRepo.findAll();
+		List<User> listOfUsers = userRepo.findAll();
+		if (Boolean.FALSE.equals(userRepo.findAll().isEmpty())) {
+			Optional<User> u= userRepo.findByUsername(MyConstants.ADMIN_USERNAME);
+			if (u.isPresent()) {
+				listOfUsers.remove(u.get());
+			}
+			return listOfUsers;
+		} else {
+			return Collections.emptyList();
+		}
 	}
 
 	@Override

@@ -35,13 +35,18 @@ public class UserDetailsImpl implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String email, String password,String username,
+	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,String code,boolean confirmed,
 			Collection<? extends GrantedAuthority> authorities) {
+		this.nom=nom;
+		this.prenom=prenom;
 		this.id = id;
 		this.email = email;
 		this.username=username;
 		this.password = password;
 		this.authorities = authorities;
+		this.confirmed=confirmed;
+		this.code=code;
+		this.sexe=sexe;
 		
 	}
 
@@ -52,9 +57,14 @@ public class UserDetailsImpl implements UserDetails {
 
 		return new UserDetailsImpl(
 				user.getId(), 
+				user.getNom(),
+				user.getPrenom(),
 				user.getEmail(),
 				user.getPassword(), 
 				user.getUsername(),
+				user.getSexe(),
+				user.getCode(),
+				user.isConfirmed(),
 				authorities);
 	}
 
@@ -101,15 +111,7 @@ public class UserDetailsImpl implements UserDetails {
 		return true;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		UserDetailsImpl user = (UserDetailsImpl) o;
-		return Objects.equals(id, user.id);
-	}
+	
 
 	public String getNom() {
 		return nom;
@@ -175,5 +177,13 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		UserDetailsImpl user = (UserDetailsImpl) o;
+		return Objects.equals(id, user.id);
+	}
 }

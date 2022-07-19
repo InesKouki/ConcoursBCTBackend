@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.models.MessageResponse;
@@ -102,6 +101,7 @@ public class ConcourServiceImpl implements IConcourService {
 			return Collections.emptySet();
 		}
 	}
+	
 
 
 
