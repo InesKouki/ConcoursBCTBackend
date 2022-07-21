@@ -22,6 +22,7 @@ public interface IConcourService {
 	public List<Concours> getAllConcours();
 	public Optional<Concours> findConcoursByName(String name);
 	public Optional<Concours> findConcoursById(Long id);
+	public Concours getById(Long id);
 	public Set<Poste> getPosteDuConcour(Long id) ;
 	public void addPosteToConcour(addPosteToConcourRequest req);
 	public void removePosteFromConcours(addPosteToConcourRequest req);

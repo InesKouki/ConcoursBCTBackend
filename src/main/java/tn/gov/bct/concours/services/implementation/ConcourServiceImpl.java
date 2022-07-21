@@ -46,6 +46,16 @@ public class ConcourServiceImpl implements IConcourService {
 		concoursRepo.deleteById(idConcour);
 
 	}
+	
+	@Override
+	public Concours getById(Long id) {
+		Optional<Concours> c=concoursRepo.findById(id);
+		if (c.isPresent()) {
+			return c.get();
+		} else {
+			return null;
+		}
+	}
 
 	@Override
 	public void updateConcours(UpdateConcoursRequest updateRequest) {

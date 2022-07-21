@@ -35,6 +35,11 @@ public class ConcourController {
 		return concourInt.getAllConcours();
 	}
 	
+	@GetMapping("/{id}")
+	public Concours getConcours(@PathVariable Long id){
+		return concourInt.getById(id);
+	}
+	
 	@PostMapping("/add")
 	//@PreAuthorize("hasRole('ADMIN')")
 	public void addConcour(@RequestBody NewConcourRequest newRequest){
