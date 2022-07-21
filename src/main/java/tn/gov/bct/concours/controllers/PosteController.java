@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.gov.bct.concours.entities.Poste;
+import tn.gov.bct.concours.models.NewPosteRequest;
+import tn.gov.bct.concours.models.UpdatePosteRequest;
 import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IPosteService;
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -29,32 +31,31 @@ public class PosteController {
 	@Autowired
 	IPosteService posteInt;
 	
-	@GetMapping("/all ")
+	@GetMapping("/all")
 //	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
-	public ResponseEntity<List<Poste>> getAllPostes(){
-		List<Poste>postes= posteInt.findAllPoste();
-		return new ResponseEntity<>(postes, HttpStatus.OK);
+	public List<Poste> getAllPostes(){
+		return  posteInt.findAllPoste();
+		
 	}
 	
 	@PostMapping("/add")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Poste> addPoste(@RequestBody Poste poste){
-		Poste newPoste = posteInt.addPoste(poste);
-		return new ResponseEntity<> (newPoste, HttpStatus.CREATED);
+	public void addPoste(@RequestBody NewPosteRequest newrequest){
+		 posteInt.addPoste(newrequest);
+	
 
 	}
 	//@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/update")
-	public ResponseEntity<Poste> updatePoste(@RequestBody Poste poste){
-		Poste updatedPoste = posteInt.addPoste(poste);
-		return new ResponseEntity<> (updatedPoste, HttpStatus.OK);
-
+	public void updatePoste(@RequestBody UpdatePosteRequest updateRequest){
+		posteInt.updatePoste(updateRequest);
+		
 	}
 	//@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deletePoste(@PathVariable("id") Long id){
+	public void deletePoste(@PathVariable("id") Long id){
 		posteInt.deletePoste(id);
-		return new ResponseEntity<> (HttpStatus.OK);
+		
 
 	}
 }

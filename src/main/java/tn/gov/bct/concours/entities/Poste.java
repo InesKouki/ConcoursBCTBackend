@@ -20,9 +20,23 @@ public class Poste {
 	private String nom;
 	@NotBlank
 	private String description ;
-	private Integer nbr_place;
+	private int nombrePlace;
 	
 	
+	
+	public Poste() {
+		super();
+	}
+	
+	
+	public Poste(@NotBlank String nom, @NotBlank String description, int nombrePlace) {
+		super();
+		this.nom = nom;
+		this.description = description;
+		this.nombrePlace = nombrePlace;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -41,12 +55,13 @@ public class Poste {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getNbr_place() {
-		return nbr_place;
+	public Integer getNombrePlace() {
+		return nombrePlace;
 	}
-	public void setNbr_place(Integer nbr_place) {
-		this.nbr_place = nbr_place;
+	public void setNombrePlace(Integer nombrePlace) {
+		this.nombrePlace = nombrePlace;
 	}
+
 	
 	
 	
