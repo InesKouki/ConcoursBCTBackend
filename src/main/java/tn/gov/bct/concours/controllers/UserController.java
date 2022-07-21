@@ -23,7 +23,6 @@ import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.services.IUserService;
 
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
@@ -33,30 +32,22 @@ public class UserController {
 	IUserService userService;
 
 	@GetMapping("/userList")
-	//@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
-	@ResponseBody
 	public List<User> getAllUsers() {
 		return userService.getAll();
 	}
 
 
 	@PutMapping("/confirm")
-<<<<<<< HEAD
-=======
-	@PreAuthorize("hasRole('USER')or hasRole('ADMIN') or hasRole('RH')")
->>>>>>> ea27f1e0d72dd7ce90cb02decc5d17551211d11a
 	public ResponseEntity<JwtResponse> confirmUser(@RequestBody ConfirmRequest confirmRequest) {
 		return ResponseEntity.ok(userService.confirmUser(confirmRequest));
 	}
 
 	@DeleteMapping("/delete/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
 	public void deleteUser(@PathVariable("id") Long id) {
 		userService.deleteUser(id);
 	}
 	
 	@PostMapping("/makeAdminRH")
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<MessageResponse> rendreAdminRH(@RequestBody String username) {
 		return userService.rendreAdmin_RH(username);
 	}

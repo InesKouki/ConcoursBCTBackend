@@ -11,13 +11,14 @@ import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.NewConcourRequest;
+import tn.gov.bct.concours.models.UpdateConcoursRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
 
 public interface IConcourService {
 	
 	public void ajouterConcour(NewConcourRequest newRequest);
 	public void deleteConcours(Long idConcour);
-	public Concours updateConcours(NewConcourRequest newRequest);
+	public void updateConcours(UpdateConcoursRequest updateRequest);
 	public List<Concours> getAllConcours();
 	public Optional<Concours> findConcoursByName(String name);
 	public Optional<Concours> findConcoursById(Long id);

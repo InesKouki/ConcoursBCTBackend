@@ -2,10 +2,9 @@ package tn.gov.bct.concours.models;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
-
-public class NewConcourRequest {
+public class UpdateConcoursRequest {
+	private Long id;
+	
 	private String titre;
 
 	private Date dateDebut;
@@ -13,6 +12,15 @@ public class NewConcourRequest {
 	private Date dateFin;
 
 	private String description;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getTitre() {
 		return titre;
@@ -45,5 +53,4 @@ public class NewConcourRequest {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 }

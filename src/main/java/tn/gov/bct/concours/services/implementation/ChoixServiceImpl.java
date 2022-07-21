@@ -1,7 +1,7 @@
 package tn.gov.bct.concours.services.implementation;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,17 +20,20 @@ public class ChoixServiceImpl implements IChoixService {
 	
 	@Autowired
 	QuestionRepository questRepo;
+	
 	@Override
 	public Choix addChoix(Choix c, Long idQuestion) {
-	Question q = questRepo.findQuestionById(idQuestion);
-	q.addChoix(c);
+	Optional<Question> q = questRepo.findById(idQuestion);
+	if (q.isPresent()) {
+		q.get().addChoix(c);
+	}
 	return choixRepo.save(c);
-		
+
 	}
 
 	@Override
 	public void deleteChoix(Long idChoix) {
-		 choixRepo.deleteChoixById(idChoix);
+		 choixRepo.deleteById(idChoix);
 		
 	}
 

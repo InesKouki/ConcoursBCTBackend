@@ -22,7 +22,7 @@ import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IPosteService;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/poste")
+@RequestMapping("/api/postes")
 public class PosteController {
 
 	
@@ -30,27 +30,27 @@ public class PosteController {
 	IPosteService posteInt;
 	
 	@GetMapping("/all ")
-	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
+//	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
 	public ResponseEntity<List<Poste>> getAllPostes(){
 		List<Poste>postes= posteInt.findAllPoste();
 		return new ResponseEntity<>(postes, HttpStatus.OK);
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/add")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Poste> addPoste(@RequestBody Poste poste){
 		Poste newPoste = posteInt.addPoste(poste);
 		return new ResponseEntity<> (newPoste, HttpStatus.CREATED);
 
 	}
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/update")
 	public ResponseEntity<Poste> updatePoste(@RequestBody Poste poste){
 		Poste updatedPoste = posteInt.addPoste(poste);
 		return new ResponseEntity<> (updatedPoste, HttpStatus.OK);
 
 	}
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deletePoste(@PathVariable("id") Long id){
 		posteInt.deletePoste(id);

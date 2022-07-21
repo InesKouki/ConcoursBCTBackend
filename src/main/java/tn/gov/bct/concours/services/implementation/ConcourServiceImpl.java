@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,8 +14,9 @@ import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.NewConcourRequest;
+import tn.gov.bct.concours.models.UpdateConcoursRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
-import tn.gov.bct.concours.repositories.ConcourRepository;
+import tn.gov.bct.concours.repositories.ConcoursRepository;
 import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IConcourService;
 
@@ -25,85 +24,95 @@ import tn.gov.bct.concours.services.IConcourService;
 public class ConcourServiceImpl implements IConcourService {
 
 	@Autowired
-	ConcourRepository concourRepo;
+	ConcoursRepository concoursRepo;
 	@Autowired
 	PosteRepository posteRepo;
+
 	@Override
 	public void ajouterConcour(NewConcourRequest newRequest) {
 		Concours c = new Concours();
+
+		c.setTitre(newRequest.getTitre());
+		c.setDatedebut(newRequest.getDateDebut());
+		c.setDatefin(newRequest.getDateFin());
 		c.setDescription(newRequest.getDescription());
-		c.settitre(newRequest.getTitre());
-		c.setDatedebut(newRequest.getDatedebut());
-		c.setDatefin(newRequest.getDatefin());
 		c.setPostes(null);
-		c.setFormulaire(null);
-		concourRepo.save(c);
-		
+		concoursRepo.save(c);
+
 	}
+
 	@Override
 	public void deleteConcours(Long idConcour) {
-		concourRepo.deleteConcoursById(idConcour);
-		
+		concoursRepo.deleteById(idConcour);
+
 	}
+
 	@Override
-	public Concours updateConcours(NewConcourRequest newRequest) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateConcours(UpdateConcoursRequest updateRequest) {
+		Optional<Concours> concours = concoursRepo.findById(updateRequest.getId());
+		if (concours.isPresent()) {
+			concours.get().setDatedebut(updateRequest.getDateDebut());
+			concours.get().setDatefin(updateRequest.getDateFin());
+			concours.get().setTitre(updateRequest.getTitre());
+			concours.get().setDescription(updateRequest.getDescription());
+			concoursRepo.save(concours.get());
+		}
 	}
+
 	@Override
 	public List<Concours> getAllConcours() {
-		return concourRepo.findAll();
+		return concoursRepo.findAll();
 	}
+
 	@Override
 	public Optional<Concours> findConcoursByName(String name) {
-		return concourRepo.findConcoursByTitre(name);
+		return concoursRepo.findByTitre(name);
 	}
+
 	@Override
 	public Optional<Concours> findConcoursById(Long id) {
-		return concourRepo.findById(id);
+		return concoursRepo.findById(id);
 	}
+
 	@Override
 	public void addPosteToConcour(addPosteToConcourRequest req) {
-		Optional<Concours> c = concourRepo.findById(req.getConcoursId());
+		Optional<Concours> c = concoursRepo.findById(req.getConcoursId());
 		Concours concours = null;
 		if (c.isPresent())
 			concours = c.get();
 		if (concours != null) {
 			Optional<Poste> p = posteRepo.findById(req.getPosteId());
 			if (p.isPresent()) {
-			
+
 				c.get().getPostes().add(p.get());
 			}
-			concourRepo.save(concours);
+			concoursRepo.save(concours);
 		}
-		
+
 	}
+
 	@Override
 	public void removePosteFromConcours(addPosteToConcourRequest req) {
-		Optional<Concours> c = concourRepo.findById(req.getConcoursId());
+		Optional<Concours> c = concoursRepo.findById(req.getConcoursId());
 		if (c.isPresent()) {
-		for (Iterator<Poste> iterator = c.get().getPostes().iterator(); iterator.hasNext();) {
-			Poste p = iterator.next();
-			if (p.getId()==req.getPosteId()) {
-				iterator.remove();
+			for (Iterator<Poste> iterator = c.get().getPostes().iterator(); iterator.hasNext();) {
+				Poste p = iterator.next();
+				if (p.getId() == req.getPosteId()) {
+					iterator.remove();
+				}
 			}
-		}
-		concourRepo.save(c.get());
+			concoursRepo.save(c.get());
 		}
 	}
-	
+
 	@Override
 	public Set<Poste> getPosteDuConcour(Long id) {
-		Optional<Concours> c = concourRepo.findById(id);
+		Optional<Concours> c = concoursRepo.findById(id);
 		if (c.isPresent()) {
 			return c.get().getPostes();
 		} else {
 			return Collections.emptySet();
 		}
 	}
-	
-
-
-
 
 }

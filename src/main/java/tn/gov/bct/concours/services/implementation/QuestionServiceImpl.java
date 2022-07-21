@@ -1,6 +1,7 @@
 package tn.gov.bct.concours.services.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Override
 	public void deleteQuestion(Long idQuestion) {
-		questRepo.deleteQuestionById(idQuestion);
+		questRepo.deleteById(idQuestion);
 		
 	}
 
@@ -37,8 +38,9 @@ public class QuestionServiceImpl implements IQuestionService {
 	}
 
 	@Override
-	public Question findQuestionByName(String name) {
-		return questRepo.findQuestionByLibelle(name);
+	public Optional<Question> findQuestionByName(String name) {
+		return questRepo.findByLibelle(name);
+
 	}
 
 }

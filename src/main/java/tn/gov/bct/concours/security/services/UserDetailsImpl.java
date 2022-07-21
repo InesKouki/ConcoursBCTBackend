@@ -35,11 +35,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-<<<<<<< HEAD
 	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,String code,boolean confirmed,
-=======
-	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,
->>>>>>> ea27f1e0d72dd7ce90cb02decc5d17551211d11a
 			Collection<? extends GrantedAuthority> authorities) {
 		this.nom=nom;
 		this.prenom=prenom;
@@ -67,11 +63,8 @@ public class UserDetailsImpl implements UserDetails {
 				user.getPassword(), 
 				user.getUsername(),
 				user.getSexe(),
-<<<<<<< HEAD
 				user.getCode(),
 				user.isConfirmed(),
-=======
->>>>>>> ea27f1e0d72dd7ce90cb02decc5d17551211d11a
 				authorities);
 	}
 

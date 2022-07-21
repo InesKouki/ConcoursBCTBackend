@@ -12,8 +12,8 @@ public class Formulaire {
 	private Long id;
 	private String titre;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="formulaire")
-	private Concours concours;
+	/*@OneToOne(cascade=CascadeType.ALL, mappedBy="formulaire")
+	private Concours concours;*/
 	
 	@OneToOne
 	private Poste poste;
