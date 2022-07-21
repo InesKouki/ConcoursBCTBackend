@@ -18,43 +18,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.gov.bct.concours.entities.Poste;
+import tn.gov.bct.concours.models.NewPosteRequest;
 import tn.gov.bct.concours.repositories.PosteRepository;
 import tn.gov.bct.concours.services.IPosteService;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/postes")
 public class PosteController {
 
-	
 	@Autowired
 	IPosteService posteInt;
-	
+
 	@GetMapping("/all ")
-//	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
-	public ResponseEntity<List<Poste>> getAllPostes(){
-		List<Poste>postes= posteInt.findAllPoste();
+	// @PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
+	public ResponseEntity<List<Poste>> getAllPostes() {
+		List<Poste> postes = posteInt.findAllPoste();
 		return new ResponseEntity<>(postes, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/add")
-	//@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Poste> addPoste(@RequestBody Poste poste){
-		Poste newPoste = posteInt.addPoste(poste);
-		return new ResponseEntity<> (newPoste, HttpStatus.CREATED);
-
+	// @PreAuthorize("hasRole('ADMIN')")
+	public void addPoste(@RequestBody NewPosteRequest newRequest) {
+		posteInt.addPoste(newRequest);
 	}
-	//@PreAuthorize("hasRole('ADMIN')")
-	@PutMapping("/update")
-	public ResponseEntity<Poste> updatePoste(@RequestBody Poste poste){
+
+	// @PreAuthorize("hasRole('ADMIN')")
+	/*@PutMapping("/update")
+	public ResponseEntity<Poste> updatePoste(@RequestBody Poste poste) {
 		Poste updatedPoste = posteInt.addPoste(poste);
-		return new ResponseEntity<> (updatedPoste, HttpStatus.OK);
+		return new ResponseEntity<>(updatedPoste, HttpStatus.OK);
 
-	}
-	//@PreAuthorize("hasRole('ADMIN')")
+	}*/
+
+	// @PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deletePoste(@PathVariable("id") Long id){
+	public ResponseEntity<?> deletePoste(@PathVariable("id") Long id) {
 		posteInt.deletePoste(id);
-		return new ResponseEntity<> (HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 
 	}
 }
