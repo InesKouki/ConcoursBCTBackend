@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Question;
+import tn.gov.bct.concours.models.NewQuestionRequest;
 import tn.gov.bct.concours.repositories.QuestionRepository;
 import tn.gov.bct.concours.services.IQuestionService;
 @Service
@@ -14,9 +16,12 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Autowired
 	QuestionRepository questRepo;
+
 	@Override
-	public Question addQuestion(Question q) {
-		return questRepo.save(q);
+	public void addQuestion(NewQuestionRequest newRequest) {
+		Question q= new Question();
+		q.setLibelle(newRequest.getLibelle());
+		questRepo.save(q);
 		
 	}
 
@@ -27,8 +32,12 @@ public class QuestionServiceImpl implements IQuestionService {
 	}
 
 	@Override
-	public Question updateQuestion(Question q) {
-		return questRepo.save(q);
+	public void updateQuestion(Question question) {
+		Optional<Question> q = questRepo.findById(question.getId());
+		if (q.isPresent()) {
+			q.get().setLibelle(question.getLibelle());
+			questRepo.save(q.get());
+		}
 		
 	}
 
@@ -39,8 +48,10 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Override
 	public Optional<Question> findQuestionByName(String name) {
-		return questRepo.findByLibelle(name);
-
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
+	
+	
 
 }

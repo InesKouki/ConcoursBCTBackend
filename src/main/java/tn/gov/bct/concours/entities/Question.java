@@ -19,10 +19,22 @@ public class Question {
 	private List<Choix> choix ;
 
 
-	public long getId() {
+	public Question() {
+		super();
+	}
+
+
+	public Question(Long id, @NotBlank String libelle) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+	}
+	
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLibelle() {
