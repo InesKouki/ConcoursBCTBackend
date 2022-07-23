@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Question {
 	@Id
@@ -16,6 +18,7 @@ public class Question {
 	private String libelle ;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="question")
+	@JsonBackReference
 	private List<Choix> choix ;
 
 
@@ -27,6 +30,12 @@ public class Question {
 	public Question(Long id, @NotBlank String libelle) {
 		super();
 		this.id = id;
+		this.libelle = libelle;
+	}
+
+
+	public Question(@NotBlank String libelle) {
+		super();
 		this.libelle = libelle;
 	}
 	
@@ -44,6 +53,16 @@ public class Question {
 		this.libelle = libelle;
 	}
 	
+	public List<Choix> getChoix() {
+		return choix;
+	}
+
+
+	public void setChoix(List<Choix> choix) {
+		this.choix = choix;
+	}
+
+
 	public void addChoix(Choix c) {
 		this.choix.add(c);
 		c.setQuestion(this);

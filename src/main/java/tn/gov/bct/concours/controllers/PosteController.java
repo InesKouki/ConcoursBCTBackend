@@ -32,7 +32,7 @@ public class PosteController {
 	IPosteService posteInt;
 	
 	@GetMapping("/all")
-//	@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
+	//@PreAuthorize("hasRole('ADMIN') or hasRole('RH')")
 	public List<Poste> getAllPostes(){
 		return  posteInt.findAllPoste();
 		
@@ -45,14 +45,16 @@ public class PosteController {
 	
 
 	}
-	//@PreAuthorize("hasRole('ADMIN')")
+	
 	@PutMapping("/update")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public void updatePoste(@RequestBody UpdatePosteRequest updateRequest){
 		posteInt.updatePoste(updateRequest);
 		
 	}
-	//@PreAuthorize("hasRole('ADMIN')")
+	
 	@DeleteMapping("/delete/{id}")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public void deletePoste(@PathVariable("id") Long id){
 		posteInt.deletePoste(id);
 		

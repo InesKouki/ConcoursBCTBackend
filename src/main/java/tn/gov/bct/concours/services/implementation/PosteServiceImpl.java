@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
 import tn.gov.bct.concours.services.IPosteService;
 import tn.gov.bct.concours.models.UpdatePosteRequest;
 import tn.gov.bct.concours.entities.Concours;
@@ -15,7 +13,7 @@ import tn.gov.bct.concours.models.NewPosteRequest;
 import tn.gov.bct.concours.repositories.PosteRepository;
 
 @Service
-@RequiredArgsConstructor
+
 public class PosteServiceImpl implements IPosteService {
 
 	@Autowired
