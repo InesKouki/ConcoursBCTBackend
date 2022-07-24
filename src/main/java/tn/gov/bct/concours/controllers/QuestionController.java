@@ -69,7 +69,7 @@ public class QuestionController {
 	}
 	
 	@GetMapping("/choix/{id}")
-	public List<Choix> getPoste(@PathVariable Long id) {
+	public List<Choix> getChoix(@PathVariable Long id) {
 		return questInt.getChoixQuestion(id);
 	}
 	

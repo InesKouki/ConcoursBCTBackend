@@ -18,7 +18,6 @@ public class Question {
 	private String libelle ;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="question")
-	@JsonBackReference
 	private List<Choix> choix ;
 
 

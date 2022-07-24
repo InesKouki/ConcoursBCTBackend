@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Choix {
 
@@ -19,6 +21,7 @@ public class Choix {
 	private float scoreChoix;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Question question;
 
 	public Long getId() {
@@ -45,6 +48,7 @@ public class Choix {
 		this.scoreChoix = scoreChoix;
 	}
 
+	
 	public Question getQuestion() {
 		return question;
 	}

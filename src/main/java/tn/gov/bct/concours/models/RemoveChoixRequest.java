@@ -1,6 +1,7 @@
 package tn.gov.bct.concours.models;
 
 public class RemoveChoixRequest {
+	
 	private Long idQuestion;
 	private Long idChoix;
 	public Long getIdQuestion() {

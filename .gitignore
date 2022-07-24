@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+src/test/java/tn/esprit/SpringBootSecurityJwtApplicationTests.java
+src/main/java/tn/gov/bct/concours/SpringBootSecurityJwtApplication.java

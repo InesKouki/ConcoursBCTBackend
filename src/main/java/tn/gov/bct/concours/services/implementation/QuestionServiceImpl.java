@@ -1,8 +1,10 @@
 package tn.gov.bct.concours.services.implementation;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,9 +66,14 @@ public class QuestionServiceImpl implements IQuestionService {
 
 	@Override
 	public List<Choix> getChoixQuestion(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Question> c = questRepo.findById(id);
+		if (c.isPresent()) {
+			return c.get().getChoix();
+		} else {
+			return Collections.emptyList();
+		}
 	}
+	
 
 	@Override
 	public void addChoix(AddChoixRequest req) {
