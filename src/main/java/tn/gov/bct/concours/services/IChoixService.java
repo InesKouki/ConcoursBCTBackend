@@ -9,5 +9,4 @@ public interface IChoixService {
 	public void deleteChoix(Long idReponse);
 	public Choix updateChoix(Choix choix );
 	public List<Choix> getAllChoix();
-	public Choix findChoixByName(String name);
 }

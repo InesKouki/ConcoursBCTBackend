@@ -48,10 +48,6 @@ public class ChoixServiceImpl implements IChoixService {
 		return choixRepo.findAll();
 	}
 
-	@Override
-	public Choix findChoixByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
