@@ -1,5 +1,6 @@
 package tn.gov.bct.concours.services.implementation;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
+import tn.gov.bct.concours.entities.Question;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.NewConcourRequest;
+import tn.gov.bct.concours.models.RemovePosteFromConcoursRequest;
 import tn.gov.bct.concours.models.UpdateConcoursRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
 import tn.gov.bct.concours.repositories.ConcoursRepository;
@@ -77,22 +80,26 @@ public class ConcourServiceImpl implements IConcourService {
 	@Override
 	public void addPosteToConcour(addPosteToConcourRequest req) {
 		Optional<Concours> c = concoursRepo.findById(req.getConcoursId());
-		Concours concours = null;
-		if (c.isPresent())
-			concours = c.get();
-		if (concours != null) {
-			Optional<Poste> p = posteRepo.findById(req.getPosteId());
-			if (p.isPresent()) {
+		Long[] posteIds = req.getPosteIds();
+		List<Poste> postes = new ArrayList<>();
+		if (c.isPresent()) {
 
-				c.get().getPostes().add(p.get());
+			for (int i=0;i < posteIds.length;i++) {
+				Optional<Poste> p=posteRepo.findById(posteIds[i]);
+				if (p.isPresent()) {
+					postes.add(p.get());
+					//f.get().getQuestions().add(q.get());
+				}
 			}
-			concoursRepo.save(concours);
+			c.get().setPostes(postes);
+			concoursRepo.save(c.get());
+			}
+			
 		}
 
-	}
 
 	@Override
-	public void removePosteFromConcours(addPosteToConcourRequest req) {
+	public void removePosteFromConcours(RemovePosteFromConcoursRequest req) {
 		Optional<Concours> c = concoursRepo.findById(req.getConcoursId());
 		if (c.isPresent()) {
 			for (Iterator<Poste> iterator = c.get().getPostes().iterator(); iterator.hasNext();) {
@@ -106,12 +113,12 @@ public class ConcourServiceImpl implements IConcourService {
 	}
 
 	@Override
-	public Set<Poste> getPosteDuConcour(Long id) {
+	public List<Poste> getPosteDuConcour(Long id) {
 		Optional<Concours> c = concoursRepo.findById(id);
 		if (c.isPresent()) {
 			return c.get().getPostes();
 		} else {
-			return Collections.emptySet();
+			return Collections.emptyList();
 		}
 	}
 

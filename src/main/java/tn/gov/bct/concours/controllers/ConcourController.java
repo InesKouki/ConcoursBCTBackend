@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.models.NewConcourRequest;
+import tn.gov.bct.concours.models.RemovePosteFromConcoursRequest;
 import tn.gov.bct.concours.models.UpdateConcoursRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
 import tn.gov.bct.concours.services.IConcourService;
@@ -55,13 +56,13 @@ public class ConcourController {
 	
 	@PostMapping("/removePoste")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public void removeConcour(@RequestBody addPosteToConcourRequest req) {
+	public void removeConcour(@RequestBody RemovePosteFromConcoursRequest req) {
 		concourInt.removePosteFromConcours(req);
 	}
 	
 	@GetMapping("/postes/{id}")
 	//@PreAuthorize("hasRole('ADMIN') ")
-	public Set<Poste> getPoste(@PathVariable Long id) {
+	public List<Poste> getPoste(@PathVariable Long id) {
 		return concourInt.getPosteDuConcour(id);
 	}
 	

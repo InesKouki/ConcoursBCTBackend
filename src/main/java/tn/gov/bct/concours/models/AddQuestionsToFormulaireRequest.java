@@ -21,18 +21,5 @@ public class AddQuestionsToFormulaireRequest {
 	public void setQuestionsId(Long[] questionsId) {
 		this.questionsId = questionsId;
 	}
-
-	
-	
-	
-	/*public Long[] getIds() {
-		String[] qstIds = questionsId.split(",");
-		Long[] data = new Long[qstIds.length] ;
-		for (int i = 0; i < qstIds.length; i++) {
-		  data[i] = Long.parseLong(qstIds[i]);
-		 
-		}
-		return data;
-	}*/
 	
 }

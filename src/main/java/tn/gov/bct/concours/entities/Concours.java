@@ -1,6 +1,7 @@
 package tn.gov.bct.concours.entities;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -29,8 +30,8 @@ public class Concours {
 	 * @ManyToOne(cascade=CascadeType.ALL) private Formulaire formulaire ;
 	 */
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Poste> postes;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Poste> postes;
 
 	public Concours() {
 	}
@@ -90,11 +91,11 @@ public class Concours {
 	 * formulaire; }
 	 */
 
-	public Set<Poste> getPostes() {
+	public List<Poste> getPostes() {
 		return postes;
 	}
 
-	public void setPostes(Set<Poste> postes) {
+	public void setPostes(List<Poste> postes) {
 		this.postes = postes;
 	}
 
