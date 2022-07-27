@@ -1,5 +1,6 @@
 package tn.gov.bct.concours.security.services;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -29,13 +30,15 @@ public class UserDetailsImpl implements UserDetails {
 	private boolean confirmed;
 
 	private String code;
+	private int CIN;
+	private Date dateNaissance;
 
 	@JsonIgnore
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,String code,boolean confirmed,
+	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,Date dateNaissance,int CIN,String code,boolean confirmed,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.nom=nom;
 		this.prenom=prenom;
@@ -47,6 +50,8 @@ public class UserDetailsImpl implements UserDetails {
 		this.confirmed=confirmed;
 		this.code=code;
 		this.sexe=sexe;
+		this.CIN=CIN;
+		this.dateNaissance=dateNaissance;
 		
 	}
 
@@ -63,6 +68,8 @@ public class UserDetailsImpl implements UserDetails {
 				user.getPassword(), 
 				user.getUsername(),
 				user.getSexe(),
+				user.getDateNaissance(),
+				user.getCin(),
 				user.getCode(),
 				user.isConfirmed(),
 				authorities);
@@ -177,6 +184,24 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 	
+	
+	
+	public int getCIN() {
+		return CIN;
+	}
+
+	public void setCIN(int cIN) {
+		CIN = cIN;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

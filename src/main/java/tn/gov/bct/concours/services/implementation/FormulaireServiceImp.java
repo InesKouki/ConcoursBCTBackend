@@ -2,13 +2,14 @@ package tn.gov.bct.concours.services.implementation;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Formulaire;
 import tn.gov.bct.concours.entities.Question;
@@ -96,18 +97,28 @@ public class FormulaireServiceImp implements IFormulaireService{
 	public void addQuestionsToFormulaire(AddQuestionsToFormulaireRequest req) {
 		Optional<Formulaire> f = formRepo.findById(req.getFormulaireId());
 		Long[] questionIds = req.getQuestionsId();
-		List<Question> questions = new ArrayList<>();
 		if (f.isPresent()) {
 			for (int i=0;i < questionIds.length;i++) {
 				Optional<Question> q=questRepo.findById(questionIds[i]);
 				if (q.isPresent()) {
-					questions.add(q.get());
-					//f.get().getQuestions().add(q.get());
+					f.get().getQuestions().add(q.get());
 				}
 			}
-			f.get().setQuestions(questions);
 			formRepo.save(f.get());
 		}
+	}
+
+	@Override
+	public List<Question> getQuestionsPasDuFormulaire(Long id) {
+		Optional<Formulaire> f = formRepo.findById(id);
+		List<Question> listQ = questRepo.findAll();
+		List <Question> listQF = f.get().getQuestions();
+		listQ.removeAll(listQF);
+		if (Boolean.FALSE.equals(listQ.isEmpty())) {
+			return listQ;
+		}
+		return Collections.emptyList();
+		
 	}
 
 }

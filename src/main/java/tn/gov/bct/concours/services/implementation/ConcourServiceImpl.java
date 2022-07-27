@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import tn.gov.bct.concours.entities.Concours;
+import tn.gov.bct.concours.entities.Formulaire;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.entities.Question;
 import tn.gov.bct.concours.models.MessageResponse;
@@ -80,7 +81,7 @@ public class ConcourServiceImpl implements IConcourService {
 	@Override
 	public void addPosteToConcour(addPosteToConcourRequest req) {
 		Optional<Concours> c = concoursRepo.findById(req.getConcoursId());
-		Long[] posteIds = req.getPosteIds();
+		Long[] posteIds = req.getPosteId();
 		List<Poste> postes = new ArrayList<>();
 		if (c.isPresent()) {
 
@@ -113,13 +114,27 @@ public class ConcourServiceImpl implements IConcourService {
 	}
 
 	@Override
-	public List<Poste> getPosteDuConcour(Long id) {
+	public List <Poste> getPosteDuConcour(Long id) {
 		Optional<Concours> c = concoursRepo.findById(id);
 		if (c.isPresent()) {
 			return c.get().getPostes();
 		} else {
 			return Collections.emptyList();
 		}
+	}
+
+	@Override
+	public List<Poste> getPosteNonDuConcour(Long id) {
+		Optional<Concours> c = concoursRepo.findById(id);
+		List <Poste> listQ = posteRepo.findAll();
+		List <Poste> listQF = c.get().getPostes();
+		listQ.removeAll(listQF);
+		if (Boolean.FALSE.equals(listQ.isEmpty())) {
+			return listQ;
+		}
+		return Collections.emptyList();
+		
+	
 	}
 
 }

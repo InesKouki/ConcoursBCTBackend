@@ -26,6 +26,7 @@ public interface IConcourService {
 	public List<Poste> getPosteDuConcour(Long id) ;
 	public void addPosteToConcour(addPosteToConcourRequest req);
 	public void removePosteFromConcours(RemovePosteFromConcoursRequest req);
+	List<Poste> getPosteNonDuConcour(Long id);
 	
 	
 

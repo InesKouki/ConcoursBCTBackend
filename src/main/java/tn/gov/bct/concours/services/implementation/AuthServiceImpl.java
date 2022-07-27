@@ -138,7 +138,7 @@ public class AuthServiceImpl implements IAuthService{
 
 		// Create new user's account
 		User user = new User(signUpRequest.getNom(),signUpRequest.getPrenom(),signUpRequest.getEmail(),encoder.encode(signUpRequest.getPassword()), signUpRequest.getUsername(), 
-				 false,signUpRequest.getSexe(),code);
+				 false,signUpRequest.getSexe(),signUpRequest.getDateNaissance(),signUpRequest.getCIN(),code);
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
@@ -202,7 +202,7 @@ public class AuthServiceImpl implements IAuthService{
 
 		return ResponseEntity
 				.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(),loginRequest.getPassword(),userDetails.getNom(),userDetails.getPrenom(),userDetails.getSexe(),
-						userDetails.getEmail(), userDetails.isConfirmed(), userDetails.getCode(), roles));
+						userDetails.getEmail(), userDetails.isConfirmed(), userDetails.getCode(),userDetails.getDateNaissance(),userDetails.getCIN(), roles));
 	}
 
 	

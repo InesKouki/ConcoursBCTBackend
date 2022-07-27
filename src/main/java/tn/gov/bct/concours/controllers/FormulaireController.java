@@ -75,5 +75,12 @@ public class FormulaireController {
 	public void updateFormulaire(@RequestBody UpdateFormulaireRequest updateRequest){
 		formInt.updateFormulaire(updateRequest);
 	}
+	
+	@GetMapping("/questsNotInForm/{id}")
+	//@PreAuthorize("hasRole('ADMIN') ")
+	public List<Question> getQuestionNotInForm(@PathVariable Long id) {
+		return formInt.getQuestionsPasDuFormulaire(id);
+	}
+	
 
 }

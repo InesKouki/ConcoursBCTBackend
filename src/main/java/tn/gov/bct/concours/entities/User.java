@@ -17,23 +17,23 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, updatable = false)
-	Long id;
+	private Long id;
 	
 	@NotBlank
-	String nom;
+	private String nom;
 	
 	@NotBlank
-	String prenom;
+	private String prenom;
 	
 	@NotBlank
-	String email;
+	private String email;
 	
 	@NotBlank
 	@JsonIgnore
-	String password;
+	private String password;
 	
 
-	String cin;
+	int cin;
 
 	@NotBlank
 	String username;
@@ -63,7 +63,7 @@ public class User {
 	}
 
 	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
-			@NotBlank String username, boolean confirmed, Date dateNaissance, @NotBlank String sexe,String code) {
+			@NotBlank String username, boolean confirmed, @NotBlank String sexe, Date dateNaissance,int Cin,String code) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -74,6 +74,7 @@ public class User {
 		this.dateNaissance = dateNaissance;
 		this.sexe = sexe;
 		this.code = code;
+		this.cin=cin;
 	}
 
 	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
@@ -129,11 +130,13 @@ public class User {
 		this.password = password;
 	}
 
-	public String getCin() {
+	
+
+	public int getCin() {
 		return cin;
 	}
 
-	public void setCin(String cin) {
+	public void setCin(int cin) {
 		this.cin = cin;
 	}
 

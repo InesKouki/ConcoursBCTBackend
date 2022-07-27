@@ -1,6 +1,7 @@
 package tn.gov.bct.concours.services;
 
 import java.util.List;
+import java.util.Set;
 
 import tn.gov.bct.concours.entities.Formulaire;
 import tn.gov.bct.concours.entities.Question;
@@ -18,6 +19,7 @@ public interface IFormulaireService {
 	void updateFormulaire(UpdateFormulaireRequest updateRequest);
 	void removeQuestionFromFormulaire(RemoveQuestionFromFormulaireRequest req);
 	void addQuestionsToFormulaire(AddQuestionsToFormulaireRequest req);
+	List<Question> getQuestionsPasDuFormulaire(Long id);
 
 	
 

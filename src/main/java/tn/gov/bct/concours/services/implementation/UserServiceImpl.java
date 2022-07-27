@@ -82,7 +82,7 @@ public class UserServiceImpl implements IUserService{
 				.collect(Collectors.toList());
 
 		return new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(),userDetails.getPassword(),userDetails.getNom(),userDetails.getPrenom(),userDetails.getSexe(),
-				userDetails.getEmail(), userDetails.isConfirmed(), userDetails.getCode(), roles);
+				userDetails.getEmail(), userDetails.isConfirmed(), userDetails.getCode(),userDetails.getDateNaissance(),userDetails.getCIN(), roles);
 	}
 
 	@Override

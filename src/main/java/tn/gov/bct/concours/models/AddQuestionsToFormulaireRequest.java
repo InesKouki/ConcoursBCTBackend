@@ -21,5 +21,6 @@ public class AddQuestionsToFormulaireRequest {
 	public void setQuestionsId(Long[] questionsId) {
 		this.questionsId = questionsId;
 	}
+
 	
 }

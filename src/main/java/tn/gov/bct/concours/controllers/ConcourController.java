@@ -73,6 +73,12 @@ public class ConcourController {
 	}
 	
 	
+	@GetMapping("/postesNonDuConcours/{id}")
+	//@PreAuthorize("hasRole('ADMIN') ")
+	public List<Poste> getPosteNonDuConcours(@PathVariable Long id) {
+		return concourInt.getPosteNonDuConcour(id);
+	}
+	
 	
 	
 }

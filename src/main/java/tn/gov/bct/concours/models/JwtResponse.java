@@ -1,5 +1,6 @@
 package tn.gov.bct.concours.models;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,9 +18,11 @@ public class JwtResponse {
 	private String nom;
 	private String prenom;
 	private String sexe;
+	private Date dateNaissance;
+	private int CIN;
 
 	public JwtResponse(String accessToken, Long id, String username, String password,String nom,String prenom,String sexe, String email, boolean confirmed,
-			String code, List<String> roles) {
+			String code,Date dateNaissance,int cin, List<String> roles) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
@@ -31,6 +34,8 @@ public class JwtResponse {
 		this.confirmed = confirmed;
 		this.code = code;
 		this.roles = roles;
+		this.dateNaissance=dateNaissance;
+		this.CIN=cin;
 	}
 
 	public String getAccessToken() {
@@ -128,6 +133,24 @@ public class JwtResponse {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public int getCIN() {
+		return CIN;
+	}
+
+	public void setCIN(int cIN) {
+		CIN = cIN;
+	}
+	
+	
 	
 	
 }

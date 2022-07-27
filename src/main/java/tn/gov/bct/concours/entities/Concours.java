@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+
+
 @Entity
 public class Concours {
 
@@ -91,16 +93,18 @@ public class Concours {
 	 * formulaire; }
 	 */
 
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public List<Poste> getPostes() {
 		return postes;
 	}
 
 	public void setPostes(List<Poste> postes) {
 		this.postes = postes;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	@Override
