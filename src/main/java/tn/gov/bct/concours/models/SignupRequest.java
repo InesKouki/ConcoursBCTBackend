@@ -27,10 +27,10 @@ public class SignupRequest {
 	
 	@NotBlank
 	private String sexe;
-	@NotBlank
+
 	private Date dateNaissance;
-	@NotBlank
-	private int CIN;
+	@Size(min = 8, max = 8)
+	private String CIN;
 
 	
 	private Set<String> role;
@@ -103,14 +103,15 @@ public class SignupRequest {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public int getCIN() {
+	public String getCIN() {
 		return CIN;
 	}
 
-	public void setCIN(int cIN) {
+	public void setCIN(String cIN) {
 		CIN = cIN;
 	}
 
+	
 	
 	
 	

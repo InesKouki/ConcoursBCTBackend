@@ -82,5 +82,13 @@ public class FormulaireController {
 		return formInt.getQuestionsPasDuFormulaire(id);
 	}
 	
+	@GetMapping("/formDuPoste/{id}")
+	//@PreAuthorize("hasRole('ADMIN') ")
+	public Formulaire getFormulaireDuPoste(@PathVariable Long id) {
+		return formInt.getFormulaireDuPoste(id);
+	}
+	
+	
+	
 
 }

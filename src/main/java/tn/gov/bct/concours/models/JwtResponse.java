@@ -19,10 +19,10 @@ public class JwtResponse {
 	private String prenom;
 	private String sexe;
 	private Date dateNaissance;
-	private int CIN;
+	private String CIN;
 
 	public JwtResponse(String accessToken, Long id, String username, String password,String nom,String prenom,String sexe, String email, boolean confirmed,
-			String code,Date dateNaissance,int cin, List<String> roles) {
+			String code,Date dateNaissance,String cin, List<String> roles) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
@@ -142,11 +142,11 @@ public class JwtResponse {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public int getCIN() {
+	public String getCIN() {
 		return CIN;
 	}
 
-	public void setCIN(int cIN) {
+	public void setCIN(String cIN) {
 		CIN = cIN;
 	}
 	

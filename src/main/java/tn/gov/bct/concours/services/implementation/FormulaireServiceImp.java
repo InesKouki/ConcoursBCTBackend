@@ -121,4 +121,16 @@ public class FormulaireServiceImp implements IFormulaireService{
 		
 	}
 
+	@Override
+	public Formulaire getFormulaireDuPoste(Long id) {
+		Optional<Poste> p = posteRepo.findById(id);
+		List<Formulaire> listF = formRepo.findAll();
+		for(Formulaire f : listF) {
+			if (f.getPoste().getId().equals(id))
+				return f;
+		}
+		
+		return null;
+
+}
 }

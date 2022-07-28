@@ -1,5 +1,6 @@
 package tn.gov.bct.concours.services.implementation;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Formulaire;
@@ -135,6 +137,31 @@ public class ConcourServiceImpl implements IConcourService {
 		return Collections.emptyList();
 		
 	
+	}
+
+	@Override
+	public List<Concours> getConcoursActive() {
+		 long millis=System.currentTimeMillis();  
+		 Date currentDate = new Date(millis);
+		List<Concours> all= concoursRepo.findAll();
+		List<Concours> returnList = new ArrayList<>();
+		for (Concours c : all) {
+			
+				if (c.getDatefin().compareTo(currentDate)>0) {
+					returnList.add(c);
+			}
+		}
+		if (Boolean.FALSE.equals(returnList.isEmpty())) {
+			return returnList;
+		}
+		return Collections.emptyList();
+		
+	}
+
+	@Override
+	public Concours getConcoursDetails(Long id) {
+		Optional<Concours> c = concoursRepo.findById(id);
+		return c.get();
 	}
 
 }

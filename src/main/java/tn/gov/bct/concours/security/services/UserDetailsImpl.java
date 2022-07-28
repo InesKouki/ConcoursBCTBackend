@@ -30,15 +30,15 @@ public class UserDetailsImpl implements UserDetails {
 	private boolean confirmed;
 
 	private String code;
-	private int CIN;
-	private Date dateNaissance;
 
+	private Date dateNaissance;
+	private String CIN;
 	@JsonIgnore
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,Date dateNaissance,int CIN,String code,boolean confirmed,
+	public UserDetailsImpl(Long id,String nom,String prenom, String email, String password,String username,String sexe,Date dateNaissance,String CIN,String code,boolean confirmed,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.nom=nom;
 		this.prenom=prenom;
@@ -186,11 +186,11 @@ public class UserDetailsImpl implements UserDetails {
 	
 	
 	
-	public int getCIN() {
+	public String getCIN() {
 		return CIN;
 	}
 
-	public void setCIN(int cIN) {
+	public void setCIN(String cIN) {
 		CIN = cIN;
 	}
 

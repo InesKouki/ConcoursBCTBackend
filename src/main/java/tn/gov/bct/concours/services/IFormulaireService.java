@@ -20,6 +20,7 @@ public interface IFormulaireService {
 	void removeQuestionFromFormulaire(RemoveQuestionFromFormulaireRequest req);
 	void addQuestionsToFormulaire(AddQuestionsToFormulaireRequest req);
 	List<Question> getQuestionsPasDuFormulaire(Long id);
+	Formulaire getFormulaireDuPoste(Long id);
 
 	
 

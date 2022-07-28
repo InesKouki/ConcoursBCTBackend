@@ -32,8 +32,8 @@ public class User {
 	@JsonIgnore
 	private String password;
 	
-
-	int cin;
+	
+	private String CIN;
 
 	@NotBlank
 	String username;
@@ -63,7 +63,7 @@ public class User {
 	}
 
 	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
-			@NotBlank String username, boolean confirmed, @NotBlank String sexe, Date dateNaissance,int Cin,String code) {
+			@NotBlank String username, boolean confirmed, @NotBlank String sexe, Date dateNaissance,String Cin,String code) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -74,10 +74,10 @@ public class User {
 		this.dateNaissance = dateNaissance;
 		this.sexe = sexe;
 		this.code = code;
-		this.cin=cin;
+		this.CIN=Cin;
 	}
 
-	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
+/*	public User(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email, @NotBlank String password,
 			@NotBlank String username, boolean confirmed, @NotBlank String sexe,String code) {
 		super();
 		this.nom = nom;
@@ -88,7 +88,7 @@ public class User {
 		this.confirmed = confirmed;
 		this.sexe = sexe;
 		this.code = code;
-	}
+	}*/
 	
 	public Long getId() {
 		return id;
@@ -132,12 +132,12 @@ public class User {
 
 	
 
-	public int getCin() {
-		return cin;
+	public String getCin() {
+		return CIN;
 	}
 
-	public void setCin(int cin) {
-		this.cin = cin;
+	public void setCin(String cin) {
+		this.CIN = cin;
 	}
 
 	public byte[] getCv() {

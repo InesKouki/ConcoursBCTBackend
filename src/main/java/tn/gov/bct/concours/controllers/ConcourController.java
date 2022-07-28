@@ -80,5 +80,15 @@ public class ConcourController {
 	}
 	
 	
+	@GetMapping("/coucoursActive")
+	public List<Concours> getConcoursActive(){
+		return concourInt.getConcoursActive();
+	}
+	
+	@GetMapping("/{id}")
+	public Concours getConcoursDetails(@PathVariable Long id){
+		return concourInt.getConcoursDetails(id);
+	}
+	
 	
 }
