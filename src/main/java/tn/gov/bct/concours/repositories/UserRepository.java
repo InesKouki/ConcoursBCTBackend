@@ -20,5 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long>, JpaRepositor
 	Boolean existsByEmail(String email);
 
 	Optional<User> findByCode(String code);
+	
+	Long countByConfirmedTrue();
 
 }

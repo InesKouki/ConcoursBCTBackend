@@ -17,6 +17,7 @@ import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Formulaire;
 import tn.gov.bct.concours.entities.Poste;
 import tn.gov.bct.concours.entities.Question;
+import tn.gov.bct.concours.models.AccueilStats;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.NewConcourRequest;
 import tn.gov.bct.concours.models.RemovePosteFromConcoursRequest;
@@ -24,6 +25,7 @@ import tn.gov.bct.concours.models.UpdateConcoursRequest;
 import tn.gov.bct.concours.models.addPosteToConcourRequest;
 import tn.gov.bct.concours.repositories.ConcoursRepository;
 import tn.gov.bct.concours.repositories.PosteRepository;
+import tn.gov.bct.concours.repositories.UserRepository;
 import tn.gov.bct.concours.services.IConcourService;
 
 @Service
@@ -34,6 +36,8 @@ public class ConcourServiceImpl implements IConcourService {
 	@Autowired
 	PosteRepository posteRepo;
 
+	@Autowired 
+	UserRepository userRepo;
 	@Override
 	public void ajouterConcour(NewConcourRequest newRequest) {
 		Concours c = new Concours();
@@ -164,4 +168,15 @@ public class ConcourServiceImpl implements IConcourService {
 		return c.get();
 	}
 
+	
+	@Override
+	public AccueilStats pageAccueil() {
+		AccueilStats stats = new AccueilStats();
+
+		stats.setConcoursTotal(concoursRepo.count());
+		stats.setUsers(userRepo.count());
+		stats.setUsersConfirmed(userRepo.countByConfirmedTrue());
+		stats.setConcoursActive(getConcoursActive().size());
+		return stats;
+	}
 }

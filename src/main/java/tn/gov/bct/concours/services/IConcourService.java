@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 import tn.gov.bct.concours.entities.Concours;
 import tn.gov.bct.concours.entities.Poste;
+import tn.gov.bct.concours.models.AccueilStats;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.NewConcourRequest;
 import tn.gov.bct.concours.models.RemovePosteFromConcoursRequest;
@@ -29,7 +30,7 @@ public interface IConcourService {
 	List<Poste> getPosteNonDuConcour(Long id);
 	public List<Concours> getConcoursActive();
 	public Concours getConcoursDetails(Long id);
-	
+	public AccueilStats pageAccueil();
 	
 
 }

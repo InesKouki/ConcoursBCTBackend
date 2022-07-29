@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.gov.bct.concours.models.AccueilStats;
 import tn.gov.bct.concours.entities.User;
 import tn.gov.bct.concours.models.ConfirmRequest;
 import tn.gov.bct.concours.models.JwtResponse;
 import tn.gov.bct.concours.models.MessageResponse;
+import tn.gov.bct.concours.services.IConcourService;
 import tn.gov.bct.concours.services.IUserService;
 
 
@@ -31,6 +33,8 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 
+	@Autowired
+	IConcourService concoursService;
 	@GetMapping("/userList")
 	public List<User> getAllUsers() {
 		return userService.getAll();
@@ -50,5 +54,10 @@ public class UserController {
 	@PostMapping("/makeAdminRH")
 	public ResponseEntity<MessageResponse> rendreAdminRH(@RequestBody String username) {
 		return userService.rendreAdmin_RH(username);
+	}
+	
+	@GetMapping("/home")
+	public AccueilStats accueil() {
+		return concoursService.pageAccueil();
 	}
 }

@@ -16,10 +16,12 @@ import org.springframework.stereotype.Service;
 import tn.gov.bct.concours.entities.ERole;
 import tn.gov.bct.concours.entities.Role;
 import tn.gov.bct.concours.entities.User;
+import tn.gov.bct.concours.models.AccueilStats;
 import tn.gov.bct.concours.models.ConfirmRequest;
 import tn.gov.bct.concours.models.JwtResponse;
 import tn.gov.bct.concours.models.MessageResponse;
 import tn.gov.bct.concours.models.MyConstants;
+import tn.gov.bct.concours.repositories.ConcoursRepository;
 import tn.gov.bct.concours.repositories.RoleRepository;
 import tn.gov.bct.concours.repositories.UserRepository;
 import tn.gov.bct.concours.security.jwt.JwtUtils;
@@ -36,6 +38,9 @@ public class UserServiceImpl implements IUserService{
 	RoleRepository roleRepository;
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	ConcoursRepository concoursRepo;
 	
 	
 	
@@ -102,5 +107,7 @@ public class UserServiceImpl implements IUserService{
 
 		return ResponseEntity.ok(new MessageResponse(MyConstants.SUCCESS_USER_TO_RH));
 	}
+
+
 
 }
